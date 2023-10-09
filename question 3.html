@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>To do list</title>
+</head>
+<body>
+<!--USER AKAN MASUKKAN INPUT DALAM INPUT BOX DAN CLICK BUTTON-->
+<h2>To Do List</h2>
+<input type="text" id="newItem" placeholder="Enter item name:"> 
+<button onclick="addItemPressed()">Add New Item</button>
+
+<!--SELEPAS CLICK BUTTON AKAN KELUAR LIST BASED ON USER INPUT ABOVE-->
+<!--KEMUDIAN BUKA UNLISTED CODE WITHOUT <li> JUST <ul> ONLY AND SET ID-->
+<!--<li> AKAN CREATE DALAM JAVASCRIPT GUNA DOM-->
+<ul id="listItem">
+	
+</ul>
+<script type="text/javascript">
+
+    //setting button Add New Item
+	function addItemPressed()
+	{
+		//create a new <li> using createElement()
+		var newLi=document.createElement("li")
+
+
+		//inside <li> put the value of newItem by user enter above
+		var newItem=document.getElementById("newItem").value;
+		newLi.innerHTML=newItem;
+
+
+		//append li to ul(listItem)
+		var listItem=document.getElementById("listItem");
+		listItem.appendChild(newLi);
+		document.getElementById("newItem").value="";
+	
+
+		//create atau tambah button untuk delete data untuk each list <li>
+		var button = document.createElement("button");
+		button.innerHTML=" Delete data";
+		newLi.appendChild(button);
+
+
+		// guna addEventListener untuk function click pada button delete data untuk remove each list <li>
+		newLi.addEventListener("click", 
+			function() {
+						listItem.removeChild(newLi);
+						})
+	}
+</script>
+</body>
+</html>
